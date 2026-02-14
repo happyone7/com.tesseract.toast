@@ -44,5 +44,11 @@ namespace Tesseract.Toast
         /// Check if a toast is currently showing.
         /// </summary>
         public bool IsShowing => _toastView != null && _toastView.IsShowing;
+
+        protected override void OnDestroy()
+        {
+            OnToastShown = null;
+            base.OnDestroy();
+        }
     }
 }

@@ -23,6 +23,11 @@ namespace Tesseract.Toast
 
         private void Awake()
         {
+            if (_canvasGroup == null)
+                _canvasGroup = GetComponent<CanvasGroup>();
+            if (_rectTransform == null)
+                _rectTransform = GetComponent<RectTransform>();
+
             Hide();
         }
 
@@ -31,6 +36,8 @@ namespace Tesseract.Toast
         /// </summary>
         public void Show(string message)
         {
+            gameObject.SetActive(true);
+
             if (_fadeCoroutine != null)
                 StopCoroutine(_fadeCoroutine);
 
@@ -41,7 +48,6 @@ namespace Tesseract.Toast
             _canvasGroup.alpha = 1f;
             _canvasGroup.blocksRaycasts = false;
             IsShowing = true;
-            gameObject.SetActive(true);
 
             _fadeCoroutine = StartCoroutine(FadeAndHide());
         }
@@ -57,8 +63,10 @@ namespace Tesseract.Toast
                 _fadeCoroutine = null;
             }
 
-            _canvasGroup.alpha = 0f;
+            if (_canvasGroup != null)
+                _canvasGroup.alpha = 0f;
             IsShowing = false;
+            gameObject.SetActive(false);
         }
 
         private void UpdateSize()
@@ -85,6 +93,7 @@ namespace Tesseract.Toast
             _canvasGroup.alpha = 0f;
             IsShowing = false;
             _fadeCoroutine = null;
+            gameObject.SetActive(false);
         }
     }
 }
