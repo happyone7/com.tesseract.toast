@@ -1,0 +1,10 @@
+{
+  "name": "com.tesseract.toast",
+  "displayName": "Tesseract Toast",
+  "version": "1.0.0",
+  "unity": "6000.0",
+  "description": "Lightweight toast notification system with auto-hide, fade animation via AnimationCurve, and configurable duration.",
+  "author": { "name": "Tesseract Studio" },
+  "dependencies": { "com.tesseract.core": "1.1.0" },
+  "keywords": ["toast", "notification", "message", "popup", "alert"]
+}
